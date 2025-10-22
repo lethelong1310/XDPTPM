@@ -1,0 +1,80 @@
+Project asm_php1 {
+  database_type: "MySQL"
+  note: "Converted from phpMyAdmin SQL Dump"
+}
+
+Table cart {
+  cart_id int [pk]
+  user_id int
+  product_id int
+  product_name varchar(100)
+  product_price varchar(50)
+  product_quantity int
+  product_image varchar(50)
+}
+
+Table customer {
+  customer_id int [pk]
+  customer_name varchar(100)
+  user_code varchar(10)
+  customer_phone varchar(50)
+  customer_address varchar(200)
+  customer_email varchar(150)
+  payments int
+  customer_note text
+  user_id int [ref: > quanli_user.user_id]
+}
+
+Table donhang {
+  order_id int [pk]
+  product_id int [ref: > product.product_id]
+  customer_id int [ref: > customer.customer_id]
+  mahang int
+  soluong int
+  tongDoanhThu int
+  trangThai tinyint
+  ngayDatHang date
+}
+
+Table giaodich {
+  giaodich_id int [pk]
+  khachhang_id int [ref: > customer.customer_id]
+  sanpham_id int [ref: > product.product_id]
+  soluong int
+  magiaodich varchar(50)
+  ngayThangNam date
+}
+
+Table product {
+  product_id int [pk]
+  category_id int [ref: > tbl_category.category_id]
+  product_name varchar(255)
+  product_details text
+  product_description text
+  product_price varchar(100)
+  product_discount varchar(100)
+  product_acitve int
+  product_hot int
+  product_quantity int
+  product_image varchar(50)
+}
+
+
+Table quanli_user {
+  user_id int [pk]
+  role tinyint
+  user_name varchar(100)
+  user_code varchar(10)
+  user_email varchar(50)
+  user_phone varchar(10)
+  user_address varchar(255)
+  user_password varchar(100)
+}
+
+Table tbl_category {
+  category_id int [pk]
+  category_name varchar(50)
+}
+
+Ref: cart.user_id > quanli_user.user_id
+Ref: cart.product_id > product.product_id
