@@ -82,7 +82,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Doanh thu</div>
+                                                Tổng Doanh thu</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($total_doanhthu). ",đ" ?></div>
                                         </div>
                                         <div class="col-auto">
@@ -121,27 +121,38 @@
                             </div>
                         </a>
 
-                        <!-- ĐƠN CHỜ -->
+                        <!-- ĐƠN HÀNG CHỜ -> SỬA THÀNH DOANH THU THÁNG NÀY -->
                         <?php
-                            $sql_select_donhang = mysqli_query($mysqli, "SELECT * FROM donhang WHERE trangThai = 0 GROUP BY mahang");
-                            $count_donhang = mysqli_num_rows($sql_select_donhang);
+                            // Tổng doanh thu và số đơn trong tháng hiện tại (dùng cột ngayDatHang)
+                            $sql_month = mysqli_query($mysqli, "
+                                SELECT 
+                                  COALESCE(SUM(tongDoanhThu),0) AS month_revenue, 
+                                  COUNT(*) AS month_orders 
+                                FROM donhang 
+                                WHERE MONTH(ngayDatHang) = MONTH(CURDATE()) 
+                                  AND YEAR(ngayDatHang) = YEAR(CURDATE())
+                            ");
+                            $row_month = mysqli_fetch_assoc($sql_month);
+                            $month_revenue = (int)$row_month['month_revenue'];
+                            $month_orders = (int)$row_month['month_orders'];
                         ?>
-                        <a href="unconfirmed_order.php" class="col-xl-3 col-md-6 mb-4 text-decoration-none">
+                        <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Đơn hàng chờ</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $count_donhang ?></div>
+                                                Doanh thu tháng này</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($month_revenue) . ",đ" ?></div>
+                                            <div class="text-xs text-muted mt-1">Số đơn: <?php echo $month_orders ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     <div class="row">

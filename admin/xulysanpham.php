@@ -51,14 +51,6 @@ if (isset($_POST['themsanpham'])) {
         echo "<script> alert('Đã thêm sản phẩm: $tensanpham') </script>";
     }
 
-    // $sql_insert_product = mysqli_query($mysqli, 
-    // "INSERT INTO product(product_name, product_image, product_quantity, product_price,
-    //  product_discount, product_details, product_description, category_id) 
-
-    // values('$tensanpham', '$hinhanh', '$soluong', '$gia', '$giakhuyenmai'
-    // , '$chitiet', '$mota', '$danhmuc')");
-    // Sau khi thêm ảnh sẽ vào thư mục images
-    // move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
 }
 
 //Cập nhật
