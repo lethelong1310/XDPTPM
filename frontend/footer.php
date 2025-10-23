@@ -50,16 +50,16 @@
 						<h3 class="text-white font-weight-bold mb-3">Danh mục</h3>
 						<ul>
 							<li class="mb-3">
-								<a href="#1">Trái cây nhập khẩu</a>
+								<a href="#1">Trái cây </a>
 							</li>
 							<li class="mb-3">
-								<a href="#1">Trái cây nội địa</a>
+								<a href="#1">Đồ Uống</a>
 							</li>
 							<li class="mb-3">
-								<a href="#1">Nước trái cây</a>
+								<a href="#1">Sữa các loại</a>
 							</li>
 							<li class="mb-3">
-								<a href="#1">Thực phẩm dinh dưỡng</a>
+								<a href="#1">Bánh kẹo</a>
 							</li>
 							
 						</ul>
@@ -90,18 +90,18 @@
 						<h3 class="text-white font-weight-bold mb-3">Liên hệ</h3>
 						<ul>
 							<li class="mb-3">
-								<i class="fas fa-map-marker"></i> An Khánh, Ninh Kiều Cần Thơ</li>
+								<i class="fas fa-map-marker"></i> Văn Quán, Hà Đông, Hà Nội</li>
 							<li class="mb-3">
 								<i class="fas fa-mobile"></i> 333 222 3333 </li>
 							<li class="mb-3">
 								<i class="fas fa-phone"></i> 0336216589 </li>
 							<li class="mb-3">
 								<i class="fas fa-envelope-open"></i>
-								<a href="mailto:example@mail.com">khoastore@gmail.com</a>
+								<a href="mailto:example@mail.com">vtmart@gmail.com</a>
 							</li>
 							<li>
 								<i class="fas fa-envelope-open"></i>
-								<a href="mailto:example@mail.com">khoashop@gmail.com</a>
+								<a href="mailto:example@mail.com">cuahangvtmart@gmail.com</a>
 							</li>
 						</ul>
 					</div>

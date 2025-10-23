@@ -13,8 +13,8 @@
                         <i class="fas fa-map-marker-alt rounded-circle"></i>
                     </div>
                     <h4 class="mt-sm-4 mt-3 mb-3">Địa chỉ</h4>
-                    <p> An Khánh, Ninh Kiều
-                        <label>Cần Thơ</label>
+                    <p> Văn Quán, Hà Đông
+                        <label>Hà Nội</label>
                     </p>
                 </div>
             </div>
@@ -36,9 +36,9 @@
                     </div>
                     <h4 class="mt-sm-4 mt-3 mb-3">Email</h4>
                     <p>
-                        <a href="mailto:info@example.com">traicaytuoi@gmail.com</a>
+                        <a href="mailto:info@example.com">vtmart@gmail.com</a>
                         <label>
-                            <a href="mailto:info@example.com">traicaynhapkhau@gmail.com</a>
+                            <a href="mailto:info@example.com">cuahangvtmart@gmail.com</a>
                         </label>
                     </p>
                 </div>

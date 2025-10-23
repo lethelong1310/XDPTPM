@@ -123,7 +123,7 @@ include('./common/head.php')
                                             <?php echo $row_acount['user_phone'] ?></td>
                                         </td>
                                         <td>
-                                            <a href="#1" class="btn btn-warning">Sửa</a>
+                                            <a href="update_account_staff.php?id=<?php echo $row_acount['user_id'] ?>" class="btn btn-warning">Sửa</a>
                                             <a href="#1" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
