@@ -1,6 +1,7 @@
 <?php  
 	$sql_category = mysqli_query($mysqli, 'SELECT * FROM tbl_category ORDER BY category_id ASC');
 ?>	
+
 <div class="navbar-inner">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,9 +47,7 @@
                     }
                     ?>
 
-                    <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-                        <a class="nav-link" href="?quanli=gioithieu">Giới thiệu</a>
-                    </li>
+                
                     
                     <li class="nav-item">
                         <a class="nav-link" href="?quanli=lienhe">Liên hệ</a>
