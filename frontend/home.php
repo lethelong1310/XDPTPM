@@ -148,8 +148,7 @@
                             ?>
                             <li>
                                 <input type="checkbox" class="checked">
-                                <span class="span"><a
-                                        href="danhmucsp.php id=<?php echo $row_category_sidebar['category_id'] ?>"><?php echo $row_category_sidebar['category_name'] ?></a></span>
+                                <span class="span"><a  href="danhmucsp.php id=<?php echo $row_category_sidebar['category_id'] ?>"><?php echo $row_category_sidebar['category_name'] ?></a></span>
                             </li>
                             <?php
                             }

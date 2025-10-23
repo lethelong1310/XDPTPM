@@ -33,7 +33,6 @@
 <div class="banner-bootom-w3-agileits py-5">
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
-
         <!-- //tittle heading -->
         <div class="row">
             <div class="col-lg-5 col-md-8 single-right-left ">
@@ -80,7 +79,6 @@
                     <p class="my-3">
                         <?php echo ($row_chitiet['product_description']) ?>
                     </p>
-
                 </div>
                 <div class="occasion-cart">
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">

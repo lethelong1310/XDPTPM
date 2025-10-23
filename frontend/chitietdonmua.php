@@ -53,7 +53,7 @@ if (isset($_GET['quanli']) && $_GET['quanli'] === 'chitietdonmua') {
 					<table class="timetable_sub">
 						<thead>
 							<tr>
-								<th>Thứ ffftự</th>
+								<th>Thứ tự</th>
 								<th>Sản phẩm</th>
 								<th>Số lượng</th>
 								<th>Tên sản phẩm</th>
