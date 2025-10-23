@@ -15,61 +15,15 @@
                     while ($row_cate_home = mysqli_fetch_array($sql_cate_home)) {
                         $id_category = $row_cate_home['category_id'];
                     ?>
-<<<<<<< HEAD
-                        <!-- first section -->
-                        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-                            <h3 class="heading-tittle text-center"><?php echo $row_cate_home['category_name'] ?></h3>
-                            <div class="row">   
-                                <?php
-=======
                     <!-- first section -->
                     <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
                         <h3 class="heading-tittle text-center"><?php echo $row_cate_home['category_name'] ?></h3>
                         <div class="row">
                             <?php
->>>>>>> db_upgrade
                                 $sql_product = mysqli_query($mysqli, "SELECT * FROM product ORDER BY product_id DESC");
                                 while ($row_product = mysqli_fetch_array($sql_product)) {
                                     if ($row_product['category_id'] == $id_category) {
                                 ?>
-<<<<<<< HEAD
-                                        <div class="col-md-4 product-men mt-5">
-                                            <div class="men-pro-item simpleCart_shelfItem">
-                                                <div class="men-thumb-item text-center">
-                                                    <img src="images/<?php echo $row_product['product_image'] ?>" alt="" class="img-fluid">
-                                                    <div class="men-cart-pro">
-                                                        <div class="inner-men-cart-pro">
-                                                            <a href="?quanli=chitietsp&id=<?php echo $row_product['product_id'] ?>&category=<?php echo $row_product['category_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-info-product text-center border-top mt-4">
-                                                    <h4 class="pt-1">
-                                                        <a href="?quanli=chitietsp&id=<?php echo $row_product['product_id'] ?>&category=<?php echo $row_product['category_id'] ?>">
-                                                        <?php echo $row_product['product_name'] ?>
-                                                    </a>
-                                                    </h4>
-                                                    <div class="info-product-price my-2">
-                                                        <span class="item_price"><?php echo number_format($row_product['product_discount']) . ".đ" ?></span>
-                                                        <del><?php echo number_format($row_product['product_price']) . ".đ" ?></del>
-                                                    </div>
-                                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                        <form action="?quanli=giohang" method="post" id="addToCartForm">
-                                                            <fieldset>
-                                                                <input type="hidden" name="tensanpham" value="<?php echo $row_product['product_name'] ?>" />
-                                                                <input type="hidden" name="sanpham_id" value="<?php echo $row_product['product_id'] ?>" />
-                                                                <input type="hidden" name="giasanpham" value="<?php echo $row_product['product_discount'] ?>" />
-                                                                <input type="hidden" name="hinhanh" value="<?php echo $row_product['product_image'] ?>" />
-                                                                <input type="hidden" name="soluong" value="1"/>
-                                                                <input type="submit" name="themgiohang" value="Thêm vào giỏ" class="button" />
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                <?php
-=======
                             <div class="col-md-4 product-men mt-5">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item text-center">
@@ -126,20 +80,13 @@
                                 </div>
                             </div>
                             <?php
->>>>>>> db_upgrade
                                     }
                                 }
                                 ?>
 
-<<<<<<< HEAD
-                            </div>
-                            
-                        </div>
-=======
                         </div>
 
                     </div>
->>>>>>> db_upgrade
                     <?php
                     }
                     ?>
@@ -199,18 +146,10 @@
                             $sql_category_sidebar = mysqli_query($mysqli, 'SELECT * FROM tbl_category ORDER BY category_id ASC');
                             while ($row_category_sidebar = mysqli_fetch_array($sql_category_sidebar)) {
                             ?>
-<<<<<<< HEAD
-                                <li>
-                                    <input type="checkbox" class="checked">
-                                    <span class="span"><a href="danhmucsp.php id=<?php echo $row_category_sidebar['category_id'] ?>"><?php echo $row_category_sidebar['category_name'] ?></a></span>
-                                </li>
-=======
                             <li>
                                 <input type="checkbox" class="checked">
-                                <span class="span"><a
-                                        href="danhmucsp.php id=<?php echo $row_category_sidebar['category_id'] ?>"><?php echo $row_category_sidebar['category_name'] ?></a></span>
+                                <span class="span"><a href="danhmucsp.php id=<?php echo $row_category_sidebar['category_id'] ?>"><?php echo $row_category_sidebar['category_name'] ?></a></span>
                             </li>
->>>>>>> db_upgrade
                             <?php
                             }
                             ?>
@@ -231,18 +170,6 @@
                                 $sql_product_sidebar = mysqli_query($mysqli, "SELECT * FROM product WHERE product_hot='0' ORDER BY product_id ASC");
                                 while ($row_product_sidebar = mysqli_fetch_array($sql_product_sidebar)) {
                                 ?>
-<<<<<<< HEAD
-                                    <div class="row p-2">
-                                        <div class="col-lg-3 col-sm-2 col-3 left-mar">
-                                            <img src="images/<?php echo $row_product_sidebar['product_image'] ?>" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-                                            <a style="color: #333;" href=""><?php echo $row_product_sidebar['product_name'] ?></a><br>
-                                            <a  href="" class="price-mar mt-2"><?php echo number_format($row_product_sidebar['product_discount']) . '.đ' ?></a>
-                                            
-                                        </div>
-                                    </div>
-=======
                                 <div class="row p-2">
                                     <div class="col-lg-3 col-sm-2 col-3 left-mar">
                                         <img src="images/<?php echo $row_product_sidebar['product_image'] ?>" alt=""
@@ -256,7 +183,6 @@
 
                                     </div>
                                 </div>
->>>>>>> db_upgrade
                                 <?php
                                 }
                                 ?>

@@ -1,9 +1,6 @@
 <?php
 $thongBao = '';
-<<<<<<< HEAD
-=======
 $user_id = isset($_SESSION['login_id']);
->>>>>>> db_upgrade
 //Thanh toán $ thông tin khách hàng
 if (isset($_POST['thanhtoan'])) {
     $name = $_POST['name'];
@@ -18,10 +15,7 @@ if (isset($_POST['thanhtoan'])) {
         if(isset($_SESSION['user_code']) && ($_SESSION['user_code'] == 0)) {
             $user_code = rand(1000, 9999);
         }
-<<<<<<< HEAD
-=======
         
->>>>>>> db_upgrade
         elseif(isset($_SESSION['user_code']) && ($_SESSION['user_code'] != 0)) {
             $user_code = $_SESSION['user_code'];
         }
@@ -60,21 +54,12 @@ if (isset($_POST['thanhtoan'])) {
             $soluong = $_POST['thanhtoan_soluong'][$i];
             //Thêm dữ liệu vào bảng don hang
             $sql_donhang = mysqli_query($mysqli, "INSERT INTO donhang(product_id , customer_id, soluong ,tongDoanhThu, mahang, ngayDatHang) 
-<<<<<<< HEAD
-                values ('$sanpham_id', '$khachhang_id', '$soluong', '$totalPayment', '$mahang' , '$ngayDatHang')");
-=======
                 values ('$sanpham_id  ham_id', '$khachhang_id', '$soluong', '$totalPayment', '$mahang' , '$ngayDatHang')");
->>>>>>> db_upgrade
 
             //Thêm dữ liệu vào bảng giao dich
             $sql_giaodich = mysqli_query($mysqli, "INSERT INTO giaodich(khachhang_id, sanpham_id, soluong , magiaodich, ngayThangNam) 
                 values ('$khachhang_id','$sanpham_id', '$soluong', '$mahang', '$ngayDatHang')");
 
-<<<<<<< HEAD
-
-            //Sau khi thêm vào đơn hàng thì xóa sản phẩm khỏi giỏ hàng
-            $sql_delete_giohang = mysqli_query($mysqli, "DELETE FROM cart WHERE product_id = '$sanpham_id'");
-=======
             // Trừ số lượng tồn kho trong bảng product
 $sql_update_kho = mysqli_query($mysqli, "
     UPDATE product 
@@ -84,7 +69,6 @@ $sql_update_kho = mysqli_query($mysqli, "
 
             //Sau khi thêm vào đơn hàng thì xóa sản phẩm khỏi giỏ hàng
             $sql_delete_giohang = mysqli_query($mysqli, "DELETE FROM cart WHERE user_id = '$user_id' and product_id = '$sanpham_id'");
->>>>>>> db_upgrade
             $thongBao = 'Đặt hàng thành công';
         }
 
@@ -179,11 +163,7 @@ $sql_update_kho = mysqli_query($mysqli, "
 
                                 </div>
                                 <?php
-<<<<<<< HEAD
-                                    $sql_lay_giohang = mysqli_query($mysqli, "SELECT * FROM cart ORDER BY cart_id DESC");
-=======
                                     $sql_lay_giohang = mysqli_query($mysqli, "SELECT * FROM cart WHERE user_id = '$user_id' ORDER BY cart_id DESC");
->>>>>>> db_upgrade
                                     while ($row_thanhtoan = mysqli_fetch_array($sql_lay_giohang)) {
 
                                 ?>

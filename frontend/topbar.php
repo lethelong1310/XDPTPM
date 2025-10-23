@@ -230,11 +230,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === '1') {
 			<!-- logo -->
 			<div class="col-md-3 logo_agile">
 				<a class="text-center" href="index.php">
-<<<<<<< HEAD
 					<img src="images/logoshop.png" style="z-index: 1000;" class="img-fluid" alt="">
-=======
-					<img src="images/logo_fruit.png" style="z-index: 1000;" class="img-fluid" alt="">
->>>>>>> db_upgrade
 				</a>
 			</div>
 			<!-- //logo -->
