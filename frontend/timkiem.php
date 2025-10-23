@@ -37,6 +37,7 @@ $count_seach = mysqli_num_rows($sql_seach_product);
                                 <?php
 
                                 while ($row_product = mysqli_fetch_array($sql_seach_product)) {
+<<<<<<< HEAD
                                 ?>
                                     <div class="col-md-4 product-men mt-5">
                                         <div class="men-pro-item simpleCart_shelfItem">
@@ -76,6 +77,10 @@ $count_seach = mysqli_num_rows($sql_seach_product);
                                 <?php
                                 }
                                 ?>
+=======
+                                    include 'frontend/product_item.php';
+                                }   ?>
+>>>>>>> db_upgrade
 
                             </div>
                         </div>

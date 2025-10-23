@@ -14,7 +14,10 @@
     } else {
         $id_category = '';
         $id_product = '';
+<<<<<<< HEAD
 
+=======
+>>>>>>> db_upgrade
     }
 
     $sql_products = mysqli_query($mysqli, "SELECT * FROM product 
@@ -24,6 +27,7 @@
     <div class="row col-12 text-roboto">
         <?php
         while ($row_product = mysqli_fetch_array($sql_products)) {
+<<<<<<< HEAD
         ?>
             <div class="col-md-3 col-sm-12 mt-2">
                 <div class="card text-center">
@@ -64,6 +68,9 @@
                 </div>
             </div>
         <?php
+=======
+            include 'frontend/product_item.php';
+>>>>>>> db_upgrade
         }
         ?>
 

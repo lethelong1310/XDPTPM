@@ -10,6 +10,7 @@
     </form>
 
     <!-- Topbar Search -->
+<<<<<<< HEAD
 <form action="xulysanpham.php" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     <div class="input-group">
         <input type="text" name="keyword" class="form-control bg-light border-0 small" placeholder="Tìm kiếm sản phẩm...">
@@ -21,6 +22,18 @@
     </div>
 </form>
 
+=======
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn bg-gradient-black" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+>>>>>>> db_upgrade
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">

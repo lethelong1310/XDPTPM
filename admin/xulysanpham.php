@@ -1,9 +1,20 @@
 <?php
 include('../db/connect.php');
+<<<<<<< HEAD
 session_start();
 include('./common/checkLogin.php');
 
 // ======================= XỬ LÝ THÊM SẢN PHẨM ==========================
+=======
+?>
+<?php
+    session_start();
+    include('./common/checkLogin.php')
+?>
+<?php
+// Thêm
+
+>>>>>>> db_upgrade
 if (isset($_POST['themsanpham'])) {
     $tensanpham = $_POST['tensanpham'];
     $hinhanh = $_FILES['hinhanh']['name'];
@@ -16,12 +27,17 @@ if (isset($_POST['themsanpham'])) {
     $danhmuc = $_POST['danhmuc'];
     $path = '../images/';
 
+<<<<<<< HEAD
     $allowedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+=======
+    $allowedFormats = array('jpg', 'jpeg', 'png', 'gif', 'webp');
+>>>>>>> db_upgrade
     $fileExt = strtolower(pathinfo($hinhanh, PATHINFO_EXTENSION));
     if (!in_array($fileExt, $allowedFormats)) {
         $error_message = "Chỉ cho phép tải lên các định dạng JPG, JPEG, PNG và GIF.";
     }
 
+<<<<<<< HEAD
     $allowedSize = 2 * 1024 * 1024; // 2 MB
     $fileSize = $_FILES['hinhanh']['size'];
     if ($fileSize > $allowedSize) {
@@ -46,6 +62,48 @@ if (isset($_POST['themsanpham'])) {
 // ======================= CẬP NHẬT SẢN PHẨM ==========================
 elseif (isset($_POST['capnhatsanpham'])) {
     $id_update = $_GET['capnhat_id'];
+=======
+    // Xác thực kích thước hình ảnh (tính bằng byte)
+    $allowedSize = 2 * 1024 * 1024; // 2 MB
+    $fileSize = $_FILES['hinhanh']['size'];
+    if ($fileSize > $allowedSize) {
+        $error_message = "Kích thước ảnh quá lớn. Vui lòng tải lên ảnh có kích thước nhỏ hơn 2 MB.";
+    }
+
+    // Kiểm tra xem có thông báo lỗi nào không
+    if (isset($error_message)) {
+        echo "<script> alert('$error_message') </script>";
+    } else {
+        // Không có lỗi, tiến hành chèn dữ liệu vào cơ sở dữ liệu
+        $sql_insert_product = mysqli_query(
+            $mysqli,
+            "INSERT INTO product(product_name, product_image, product_quantity, product_price,
+             product_discount, product_details, product_description, category_id) 
+
+            values('$tensanpham', '$hinhanh', '$soluong', '$gia', '$giakhuyenmai'
+            , '$chitiet', '$mota', '$danhmuc')"
+        );
+        // Sau khi thêm ảnh sẽ vào thư mục images
+        move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
+        echo "<script> alert('Đã thêm sản phẩm: $tensanpham') </script>";
+    }
+
+    // $sql_insert_product = mysqli_query($mysqli, 
+    // "INSERT INTO product(product_name, product_image, product_quantity, product_price,
+    //  product_discount, product_details, product_description, category_id) 
+
+    // values('$tensanpham', '$hinhanh', '$soluong', '$gia', '$giakhuyenmai'
+    // , '$chitiet', '$mota', '$danhmuc')");
+    // Sau khi thêm ảnh sẽ vào thư mục images
+    // move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
+}
+
+//Cập nhật
+elseif (isset($_POST['capnhatsanpham'])) {
+    // Lấy id để so sanh cập nhật
+    $id_update = $_GET['capnhat_id'];
+
+>>>>>>> db_upgrade
     $tensanpham = $_POST['tensanpham'];
     $hinhanh = $_FILES['hinhanh']['name'];
     $hinhanh_tmp = $_FILES['hinhanh']['tmp_name'];
@@ -58,6 +116,7 @@ elseif (isset($_POST['capnhatsanpham'])) {
     $path = '../images/';
 
     if ($hinhanh == '') {
+<<<<<<< HEAD
         $chitiet_escaped = mysqli_real_escape_string($mysqli, $chitiet);
         $sql_update_product = "
             UPDATE product 
@@ -74,11 +133,22 @@ elseif (isset($_POST['capnhatsanpham'])) {
                 product_price='$gia', product_discount='$giakhuyenmai', product_details='$chitiet_escaped', 
                 product_description='$mota', category_id='$danhmuc' 
             WHERE product_id='$id_update'";
+=======
+        //Trường hợp không chỉnh sửa ảnh
+        $chitiet_escaped = mysqli_real_escape_string($mysqli, $chitiet);
+        $sql_update_product = "UPDATE product SET product_name='$tensanpham', product_quantity='$soluong', product_price='$gia', product_discount='$giakhuyenmai', product_details='$chitiet_escaped', product_description='$mota', category_id='$danhmuc' WHERE product_id='$id_update'";
+    } else {
+        //Trường hợp có chỉnh chỉnh sửa ảnh
+        $chitiet_escaped = mysqli_real_escape_string($mysqli, $chitiet);
+        $hinhanh_escaped = mysqli_real_escape_string($mysqli, $hinhanh);
+        $sql_update_product = "UPDATE product SET product_name='$tensanpham', product_image='$hinhanh_escaped', product_quantity='$soluong', product_price='$gia', product_discount='$giakhuyenmai', product_details='$chitiet_escaped', product_description='$mota', category_id='$danhmuc' WHERE product_id='$id_update'";
+>>>>>>> db_upgrade
         move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
     }
 
     mysqli_query($mysqli, $sql_update_product);
     header('Location: xulysanpham.php');
+<<<<<<< HEAD
     exit();
 }
 
@@ -115,10 +185,25 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
         ORDER BY product.product_id ASC 
         LIMIT $begin, $productsPerPage");
 }
+=======
+}
+
+?>
+
+<?php
+if (isset($_GET['xoa'])) {
+    $id_xoa = $_GET['xoa'];
+
+    $sql_xoa = mysqli_query($mysqli, "DELETE FROM product WHERE product_id = '$id_xoa'");
+}
+
+
+>>>>>>> db_upgrade
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <?php include('./common/head.php'); ?>
 <body id="page-top">
 
@@ -141,6 +226,52 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
 
                 <div class="row mb-5">
  <?php
+=======
+
+<?php
+    include('./common/head.php')
+?>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- sidebar -->
+        <?php
+        include('./common/sidebar.php');
+        ?>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <?php
+                include('./common/topbar.php');
+                ?>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                <!-- <a href="xulysanpham.php">Quản lí sản phẩm</a> -->
+                                <a href="index.php">Dashboard</a><span class="text-dark">  / Quản lí sản phẩm</span>
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mb-5 mb-5">
+                        <?php
+>>>>>>> db_upgrade
 
                         if (isset($_GET['quanli']) == 'capnhat') {
                             $id_capnhat = $_GET['capnhat_id'];
@@ -198,6 +329,7 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                         <?php
                         } else {
                         ?>
+<<<<<<< HEAD
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center align-items-center mb-2">
                                 <div class="d-flex mr-auto">
@@ -271,3 +403,137 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
 
 </body>
 </html>
+=======
+
+
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-center align-items-center mb-2">
+                                    <div class="d-flex mr-auto">
+                                        <a href="themsanpham.php" class="btn btn-success">
+                                            <i class="fas fa-plus"></i>
+                                            Thêm sản phẩm
+                                        </a>
+                                        
+                                    </div>
+
+                                    <h4 class="py-1 mr-auto">Danh sách sản phẩm</h4>
+                                    <a href="#1" class="btn btn-secondary ml-2">
+                                            <i class="fas fa-trash"></i>
+                                            Thùng rác(0)
+                                    </a>
+
+                                </div>
+
+                                <table class="table table-bordered">
+                                    <!-- <?php
+
+                                            $productsPerPage = 5;
+                                            if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+                                                $currentPage = max(1, $_GET['page']);
+                                            } else {
+                                                $currentPage = 1;
+                                            }
+                                            $begin = ($currentPage - 1) * $productsPerPage;
+
+                                            $sql_select_sp = mysqli_query($mysqli, "SELECT * FROM product, tbl_category 
+                                    WHERE product.category_id = tbl_category.category_id ORDER BY product.product_id ASC LIMIT $begin, $productsPerPage");
+                                            ?> -->
+                                    <tr class="text-center">
+                                        <th>Thứ tự</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Số lượng</th>
+                                        <th>Danh mục</th>
+                                        <th>Giá sản phẩm</th>
+                                        <th>Giá khuyến mãi</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    <?php
+                                    $i = 0;
+                                    while ($row_sanpham = mysqli_fetch_array($sql_select_sp)) {
+                                        $i++;
+                                        $orderNumber = $begin + $i;
+                                    ?>
+                                        <tr class="text-center">
+                                            <td><?php echo $orderNumber ?></td>
+                                            <td><?php echo $row_sanpham['product_name'] ?></td>
+                                            <td class="invert-image">
+                                                <img style="max-width: 100px;" src="../images/<?php echo $row_sanpham['product_image'] ?>" alt="Hình ảnh" class="img-responsive">
+                                            </td>
+                                            <td><?php echo $row_sanpham['product_quantity'] ?></td>
+                                            <td><?php echo $row_sanpham['category_name'] ?></td>
+                                            <td><?php echo number_format($row_sanpham['product_price']) . "đ" ?></td>
+                                            <td><?php echo number_format($row_sanpham['product_discount']) . "đ" ?></td>
+                                            <td>
+                                                <!-- <div class="d-flex"> -->
+                                                <!-- echo ra id để xóa và cập nhật -->
+                                                <a href="?xoa=<?php echo $row_sanpham['product_id'] ?>" class="btn btn-danger mr-1 my-auto" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm không, sau khi xóa sẽ không thể khôi phục!')">Xóa
+                                                </a>
+                                                <!-- Lấy id để so sanh cập nhật -->
+                                                <a href="xulysanpham.php?quanli=capnhat&capnhat_id=<?php echo $row_sanpham['product_id'] ?>" class="btn btn-warning">Sửa</a>
+                                                <!-- </div> -->
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+
+
+                                </table>
+                                <?php
+                                $sql_page = mysqli_query($mysqli, "SELECT * FROM product");
+                                $count_row_page = mysqli_num_rows($sql_page);
+                                $page = ceil($count_row_page / 5);
+                                ?>
+                                <?php
+                                include_once('../common/paging.php')
+                                ?>
+
+                            </div>
+
+                        <?php
+                        }
+                        ?>
+
+
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+
+            </div>
+            <!-- End of Main Content -->
+
+            <?php
+            include('./common/footer.php')
+            ?>
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <?php
+        include('./common/modal.php')
+    ?>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+>>>>>>> db_upgrade

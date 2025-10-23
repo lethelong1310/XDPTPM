@@ -81,6 +81,10 @@
 			include('./frontend/herobg.php');
 			include('./frontend/cart.php');
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> db_upgrade
 		elseif($temp =='dondamua'){
 			include('./frontend/dondamua.php');
 		}
