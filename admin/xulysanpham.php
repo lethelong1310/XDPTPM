@@ -190,6 +190,14 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                                     </tr>
                                 <?php } ?>
                             </table>
+                            <?php
+                    $sql_page = mysqli_query($mysqli, "SELECT * FROM product");
+                    $count_row_page = mysqli_num_rows($sql_page);
+                    $page = ceil($count_row_page / 5);
+                ?>
+                <?php
+                    include_once('../common/paging.php')
+                ?>
                         </div>
                     <?php } ?>
                 </div>
