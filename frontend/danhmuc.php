@@ -41,7 +41,7 @@ $title = $sql_title['category_name'];
 											<img src="images/<?php echo $row_product['product_image'] ?>" alt="" class="img-fluid">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
-													<a href="?quanli=chitietsp&id=<?php echo $row_product['product_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
+													<a href="?quanli=chitietsp&id=<?php echo $row_product['product_id'] ?>&category=<?php echo $row_product['category_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
 												</div>
 											</div>
 										</div>

@@ -13,6 +13,8 @@
         $id_product = $_GET['id'];
     } else {
         $id_category = '';
+        $id_product = '';
+
     }
 
     $sql_products = mysqli_query($mysqli, "SELECT * FROM product 
