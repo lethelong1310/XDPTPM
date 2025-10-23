@@ -140,9 +140,64 @@ if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                 </div>
 
                 <div class="row mb-5">
-                    <?php if (isset($_GET['quanli']) == 'capnhat') { ?>
-                        <!-- Form cập nhật giữ nguyên -->
-                    <?php } else { ?>
+ <?php
+
+                        if (isset($_GET['quanli']) == 'capnhat') {
+                            $id_capnhat = $_GET['capnhat_id'];
+                            $sql_capnhat = mysqli_query($mysqli, "SELECT * FROM product WHERE product_id='$id_capnhat'");
+                            $row_capnhat = mysqli_fetch_array($sql_capnhat);
+                            $id_category_1 = $row_capnhat['category_id'];
+                        ?>
+                            <div class="col-lg-10 col-lg-12">
+                                <h4 class="py-1 text-center">Cập nhật sản phẩm</h4>
+
+                                <form class="row" action="" method="post" enctype="multipart/form-data">
+                                    <div class="col-1"></div>
+                                    <div class="col-lg-5">
+                                        <label for="">Tên sản phẩm</label>
+                                        <input type="text" class="form-control" name="tensanpham" value="<?php echo $row_capnhat['product_name'] ?>">
+
+                                        <label for="">Hình ảnh</label>
+                                        <input type="file" class="form-control" name="hinhanh">
+                                        <img style="max-width: 100px;" src="../images/<?php echo $row_capnhat['product_image'] ?>" alt=""><br>
+                                        <label for="">Giá sản phẩm</label>
+                                        <input type="text" class="form-control" name="giasanpham" value="<?php echo $row_capnhat['product_price'] ?>">
+                                        <label for="">Giá khuyến mãi</label>
+                                        <input type="text" class="form-control" name="giakhuyenmai" value="<?php echo $row_capnhat['product_discount'] ?>">
+                                        <label for="">Số lượng</label>
+                                        <input type="text" class="form-control" name="soluong" value="<?php echo $row_capnhat['product_quantity'] ?>">
+
+                                        <?php
+                                        $sql_danhmuc = mysqli_query($mysqli, "SELECT * FROM tbl_category ORDER BY category_id ASC");
+                                        ?>
+                                        <label for="">Danh mục sản phẩm</label>
+                                        <select class="form-control" name="danhmuc" required>
+                                            <option value="">Chọn danh mục</option>
+                                            <?php
+                                            while ($row_danhmuc = mysqli_fetch_array($sql_danhmuc)) {
+                                            ?>
+                                                <option value="<?php echo $row_danhmuc['category_id'] ?>"><?php echo $row_danhmuc['category_name'] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                        <input type="submit" name="capnhatsanpham" value="Cập nhật" class="btn btn-success my-2" style="width: 200px;">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <label for="">Mô tả</label>
+                                        <textarea rows="8" class="form-control mb-2" name="mota" style="height: 210px;"><?php echo $row_capnhat['product_description'] ?></textarea>
+                                        <label for="">Chi tiết</label>
+                                        <textarea rows="8" class="form-control" name="chitiet" style="height: 210px;"><?php echo $row_capnhat['product_details'] ?></textarea>
+                                    </div>
+                                    <div class="col-1"></div>
+
+                                    
+                                </form>
+                            </div>
+
+                        <?php
+                        } else {
+                        ?>
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center align-items-center mb-2">
                                 <div class="d-flex mr-auto">
