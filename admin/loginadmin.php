@@ -7,39 +7,44 @@ session_start();
 //Đăng nhập
 $errors = '';
 if (isset($_POST['login_admin'])) {
-	$taikhoan = $_POST['email_admin'];
-	$matkhau = $_POST['password_admin'];
+    $taikhoan = $_POST['email_admin'];
+    $matkhau = $_POST['password_admin'];
 
-	$select_admin = mysqli_query($mysqli, "SELECT * FROM quanli_user WHERE role='1' ");
+    // Tìm user theo email
+    $select_admin = mysqli_query($mysqli, "SELECT * FROM quanli_user WHERE user_email = '$taikhoan'");
     $row_count = mysqli_num_rows($select_admin);
-	$row_admin = mysqli_fetch_array($select_admin);
-	$row_email = $row_admin['user_email'];
-	$row_password = $row_admin['user_password'];
 
-    if($row_count == 0) {
+    if ($row_count == 0) {
         $errors .= "Tài khoản không tồn tại !<br>";
-    }elseif($taikhoan != $row_email) {
-        $errors .= "Sai tên đăng nhập !<br>";
+    } else {
+        $row_admin = mysqli_fetch_array($select_admin);
+        $row_email = $row_admin['user_email'];
+        $row_password = $row_admin['user_password'];
+        $role = $row_admin['role'];
+
+        if ($matkhau != $row_password) {
+            $errors .= "Sai mật khẩu ! <br>";
+        } else {
+            // Thành công
+            if ($role == '1') { // admin
+                $_SESSION['admin'] = $row_admin['role'];
+                $_SESSION['login_email'] = $row_admin['user_email'];
+                $_SESSION['login_name'] = $row_admin['user_name'];
+                $_SESSION['login_admin_id'] = $row_admin['user_id'];
+                header('location: index.php');
+                exit();
+            } elseif ($role == '0') { 
+                $_SESSION['admin'] = $row_admin['role'];
+                $_SESSION['login_email'] = $row_admin['user_email'];
+                $_SESSION['login_name'] = $row_admin['user_name'];
+                $_SESSION['login_admin_id'] = $row_admin['user_id'];// user
+                header('location: ../nhanvien/index.php');
+                exit();
+            }
+        }
     }
-
-    if($matkhau != $row_password) {
-        $errors .= "Sai mật khẩu admin ! <br>";
-    }
-
-	if ($taikhoan == '' || $matkhau  == '') {
-		echo "<script> alert('Vui lòng nhập đầy đủ tài khoản và password')  </script>";
-	} else {
-		if (($taikhoan == $row_email) && ($matkhau == $row_password)) {
-            $_SESSION['admin'] = $row_admin['role'];
-			$_SESSION['login_email'] = $row_admin['user_email'];
-			$_SESSION['login_name'] = $row_admin['user_name'];
-			$_SESSION['login_admin_id'] = $row_admin['user_id'];
-
-            header('location: index.php');
-			exit();			
-		}
-	}
 }
+
 ?>
 
 <!DOCTYPE html>

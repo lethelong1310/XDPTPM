@@ -1,0 +1,17 @@
+{
+    "name": "admin/xddatn",
+    "autoload": {
+        "psr-4": {
+            "Admin\\Xddatn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lethelong",
+            "email": "longlethe1310@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.1"
+    }
+}

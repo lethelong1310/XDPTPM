@@ -39,25 +39,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-        Addons
-    </div> -->
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Trang</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Tùy chọn khác</h6>
-                <a class="collapse-item" href="#1">Đăng ký</a>
-                <a class="collapse-item" href="#1">Quên mật khẩu</a>
-            </div>
-        </div>
-    </li>
 
 
     <!-- Nav Item - Tables Order-->
@@ -83,11 +64,6 @@
         <a class="nav-link" href="xulydanhmuc.php">
             <i class="fas fa-fw fa-folder-open"></i>
             <span>Danh mục</span></a>
-    </li>
-    <li class="nav-item active">
-        <a class="nav-link" href="message.php">
-            <i class="fas fa-envelope fa-fw"></i>
-            <span>Tin nhắn</span></a>
     </li>
 
     <li class="nav-item">
